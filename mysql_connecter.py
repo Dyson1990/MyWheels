@@ -28,8 +28,6 @@ class mysql_connecter(object):
         """
         :return: list
         """
-        log_obj.debug(sql)
-
         con = ''
         try:
             con = mysql.connect(ip,user,password,dbname,charset = charset)
