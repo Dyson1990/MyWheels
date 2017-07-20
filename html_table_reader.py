@@ -5,6 +5,8 @@
     @Contact: Weaver1990@163.com
     @file: html_table_reader.py
     @time: 2017/7/19 16:35
+    @instruction: table_tr_td => 解析html中tabel>tr>td这种格式的表格
+                  standardize => 将解析过存储在df中的表格按需求做DIY
 --------------------------------
 """
 import sys
@@ -20,10 +22,10 @@ class html_table_reader(object):
     def __init__(self):
         pass
 
-    def table_tr_td(self, e_table, fill_method = 'ffill'):
+    def table_tr_td(self, e_table, fill_method = None):
         """
         :param e_table: bs4的table元素
-        :param full_row_title: True的话，碰到横向合并单元格，选择填充方式，否则用None
+        :param fill_method : 参数与fillna()中的method相同，选择填充方式，否则用None
         :return:
         """
         if not (isinstance(e_table, bs4.element.Tag) or isinstance(e_table, bs4.BeautifulSoup)):
