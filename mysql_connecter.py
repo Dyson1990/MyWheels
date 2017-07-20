@@ -15,9 +15,9 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 import set_log
 
-import sqlalchemy
-import sqlalchemy.ext.declarative
-import sqlalchemy.orm
+#import sqlalchemy
+#import sqlalchemy.ext.declarative
+#import sqlalchemy.orm
 
 log_obj = set_log.Logger('mysql_connecter.log', set_log.logging.WARNING,
                          set_log.logging.DEBUG)
