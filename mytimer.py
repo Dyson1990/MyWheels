@@ -21,7 +21,7 @@ sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-class timer(object):
+class mytimer(object):
     # 被周期性调度触发的函数
     def execute_command(self, cmd, inc):
         '''''
@@ -38,5 +38,5 @@ class timer(object):
         schedule.run()
 
 if __name__ == '__main__':
-    timer = timer()
-    timer.cmd_timer("netstat -an", 60)
+    mytimer = mytimer()
+    mytimer.cmd_timer("netstat -an", 60)
