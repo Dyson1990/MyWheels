@@ -22,7 +22,7 @@ class html_table_reader(object):
     def __init__(self):
         pass
 
-    def table_tr_td(self, e_table, fill_method = None):
+    def table_tr_td(self, e_table, fill_method = None, start_row = 0):
         """
         :param e_table: bs4的table元素
         :param fill_method : 参数与fillna()中的method相同，选择填充方式，否则用None
@@ -42,6 +42,9 @@ class html_table_reader(object):
         # 值填在第一个单元格中，其他的用None填充
         e_trs = df0[0].tolist()
         for r in xrange(row_count):
+            if r < start_row: # 有些table内的第一行不是标题
+                continue
+
             row = e_trs[r]
             e_tds = row.find_all('td')
             i = 0
@@ -70,9 +73,11 @@ class html_table_reader(object):
         """将数据的标题与数据分离，将有合并单元的行合并"""
         if b0 and df.iloc[0,:].hasnans and df.iloc[1,:].hasnans:# 假设第一排数据行没有横向合并单元格
             df.iloc[0, :] = df.iloc[0, :].fillna(method='ffill') + (delimiter + df.iloc[1,:]).fillna('')
-            df.columns = df.iloc[0]
-            df.columns.name = None
-            df = df.drop([0,1], axis=0)
+            df = df.drop([1,], axis=0)
+
+        df.columns = df.iloc[0,:]
+        df.columns.name = None
+        df = df.drop([0,], axis=0)
 
         for r in xrange(df.shape[0]-1, 0, -1):
             if df.iloc[r,:].hasnans:
