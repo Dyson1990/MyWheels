@@ -32,7 +32,7 @@ class html_table_reader(object):
             e_table = bs4.BeautifulSoup(e_table, 'html.parser')
 
         # 搭建表格框架
-        df0 = pd.DataFrame(e_table.find_all('tr'))
+        df0 = pd.DataFrame(e_table.find_all('tr')[start_row:])
         df0[1] = df0[0].apply(lambda e:len(e.find_all('td')))
         col_count = max(df0[1])
         row_count = len(df0.index)
@@ -42,9 +42,6 @@ class html_table_reader(object):
         # 值填在第一个单元格中，其他的用None填充
         e_trs = df0[0].tolist()
         for r in xrange(row_count):
-            if r < start_row: # 有些table内的第一行不是标题
-                continue
-
             row = e_trs[r]
             e_tds = row.find_all('td')
             i = 0
