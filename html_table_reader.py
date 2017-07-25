@@ -79,6 +79,22 @@ class html_table_reader(object):
         df.index = range(len(df.index)) # 索引重新从0计算
         return df
 
+    def data_standardize(self, df, delimiter=r'/\n/'):
+        for r in xrange(df.shape[0]-1, 0, -1):
+            if df.iloc[r,:].hasnans:
+                df.iloc[r-1, :] = df.iloc[r-1, :] + (delimiter + df.iloc[r, :]).fillna('')
+                df = df.drop(r,axis=0)
+        df.index = range(len(df.index))  # 索引重新从0计算
+        return df
+
+    def standardize(self, df, delimiter=r'/\n/', b0 = True):
+        df = self.title_standardize(df, delimiter, b0)
+        df = self.data_standardize(df, delimiter)
+
+        return df
+
+
+
 if __name__ == '__main__':
     s = """<table bordercolor="#000000" border="1">
 		<tbody>
@@ -230,4 +246,5 @@ if __name__ == '__main__':
     html_table_reader = html_table_reader()
     df = html_table_reader.table_tr_td(s,None)
     #df.to_csv('df.csv', encoding='utf_8_sig')
-    print html_table_reader.title_standardize(df)#.to_csv('df.csv', encoding='utf_8_sig')
+    print df.type
+    #print html_table_reader.standardize(df)
