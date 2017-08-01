@@ -44,10 +44,13 @@ class html_table_reader(object):
         for r in xrange(row_count):
             row = e_trs[r]
             e_tds = row.find_all('td')
-            i = 0
+            i = 0 # 为了跳过已经填好None值的单元格，直接用列序号会报错
             has_colspan = False
             for c in xrange(col_count):
                 if pd.isnull(df.iloc[r,c]):
+                    continue
+                if i > len(e_tds)-1 and df.iloc[r,c]==0:
+                    df.iloc[r, c] = None
                     continue
                 e_td = e_tds[i]
                 # 横向合并的单元格
@@ -55,7 +58,6 @@ class html_table_reader(object):
                     has_colspan = True
                     # 有些'colspan'会超出表格宽度
                     for j in xrange(1, min(col_count-c,int(e_td['colspan']))):
-                        print df
                         df.iloc[r, c + j] = None
                 # 竖向合并的单元格
                 if e_td.has_attr('rowspan'):
@@ -100,61 +102,69 @@ class html_table_reader(object):
 
 if __name__ == '__main__':
     s = """
-            <table style="border-bottom-color: #333333; border-top-color: #333333; border-collapse: collapse; border-right-color: #333333; font-size: 12px; border-left-color: #333333" width="100%" cellspacing="0" cellpadding="1" border="1">
-                <tbody>
-                    <tr>
-                        <td style="width: 100px">宗地编号：</td>
-                        <td style="width: 200px; word-break: break-all">&nbsp; 定海区招拍挂地块SF-2016-001号</td>
-                        <td style="width: 100px">宗地面积：</td>
-                        <td style="width: 90px">&nbsp;45097平方米</td>
-                        <td style="width: 110px">宗地坐落：</td>
-                        <td style="width: 200px">&nbsp;定海区干览镇（国际水产品产业园区）</td>
-                    </tr>
-                    <tr>
-                        <td>出让年限：</td>
-                        <td>&nbsp;40年</td>
-                        <td>容积率：</td>
-                        <td>&nbsp;1.3≤容积率≤1.5</td>
-                        <td>建筑密度(%)：</td>
-                        <td>&nbsp;≤50</td>
-                    </tr>
-                    <tr>
-                        <td>绿化率(%)：</td>
-                        <td>&nbsp;≥10</td>
-                        <td>建筑限高(米)：</td>
-                        <td>&nbsp;</td>
-                        <td>土地用途：</td>
-                        <td>&nbsp;批发零售用地</td>
-                    </tr>
-                    <tr>
-                        <td>投资强度：</td>
-                        <td>&nbsp;0万元/公顷</td>
-                        <td>保证金：</td>
-                        <td>&nbsp;1<a href="http://11" title="">11</a>3万元</td>
-                        <td>土地估价备案号：</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">&nbsp;现状土地条件：交地时现状为净地</td>
-                    </tr>
-                    <tr>
-                        <td>起始价：</td>
-                        <td>&nbsp;5566.257万元</td>
-                        <td>加价幅度：</td>
-                        <td colspan="3">&nbsp;3.9477万元</td>
-                    </tr>
-                    <tr>
-                        <td nowrap="nowrap">挂牌开始时间：</td>
-                        <td>&nbsp;2016年02月27日09时00分</td>
-                        <td>挂牌截止时间：</td>
-                        <td colspan="3">&nbsp;2016年03月07日16时00分</td>
-                    </tr>
-                    <tr>
-                        <td>备注：</td>
-                        <td colspan="9">&nbsp;1、本宗地商务办公建筑面积不超过总建筑面积的45%，土地用途为批发零售用地、商务金融用地（40年），具体用途及土地面积须经项目竣工验收合格后，在土地登记时确定；2、其他具体土地使用条件按舟山市规划局出具的规划设计条件为准。</td>
-                    </tr>
-                </tbody>
-            </table>"""
+<table style="border-color:#333333;font-size:12px;" width="100%" cellspacing="0" cellpadding="4" border="1">
+		<tbody>
+			<tr>
+				<td>
+					地块编号
+				</td>
+				<td>
+					地块位置
+				</td>
+				<td>
+					土地面积(公顷)
+				</td>
+				<td>
+					土地用途
+				</td>
+				<td>
+					出让年限
+				</td>
+				<td>
+					成交价(万元)
+				</td>
+				<td>
+					受让单位
+				</td>
+			</tr>
+			<tr>
+				<td>
+					金西东区D-003-02号
+				</td>
+				<td>
+					金西东区琳湖街东侧
+				</td>
+				<td>
+					0.3918
+				</td>
+				<td>
+					工业用地
+				</td>
+				<td>
+					50
+				</td>
+				<td>
+					176.31
+				</td>
+				<td>
+					金华市海纳工具有限公司
+				</td>
+			</tr>
+			<tr>
+				<td>
+					土地使用条件：
+				</td>
+				<td colspan="6">
+					详见《建设用地规划条件书》
+				</td>
+			</tr>
+			<tr>
+				<td>
+					备注：
+				</td>
+			</tr>
+		</tbody>
+	</table>"""
     html_table_reader = html_table_reader()
     df = html_table_reader.table_tr_td(s,None)
     #df.to_csv('df.csv', encoding='utf_8_sig')
