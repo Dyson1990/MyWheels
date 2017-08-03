@@ -68,7 +68,9 @@ class html_table_reader(object):
                 i = i + 1
             if has_colspan and fill_method:
                 df.iloc[r,:] = df.iloc[r,:].fillna(method = fill_method)
-
+        # 防止在读写json的时候出现顺序问题
+        df.index = [str(i) for i in df.index]
+        df.columns = [str(i) for i in df.columns]
         return df
 
     def title_standardize(self, df, delimiter='/\n/', b0 = True):
