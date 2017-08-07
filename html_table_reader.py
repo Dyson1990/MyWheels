@@ -73,10 +73,13 @@ class html_table_reader(object):
         #df.columns = [str(i) for i in df.columns]
         return df
 
-    def title_standardize(self, df, delimiter='/\n/', b0 = True):
+    def title_standardize(self, df, delimiter='=>', b0 = True, fillna_method='ffill'):
         """将数据的标题与数据分离，将有合并单元的行合并"""
         if b0 and df.iloc[0,:].hasnans and df.iloc[1,:].hasnans:# 假设第一排数据行没有横向合并单元格
-            df.iloc[0, :] = df.iloc[0, :].fillna(method='ffill') + (delimiter + df.iloc[1,:]).fillna('')
+            if fillna_method:
+                df.iloc[0, :] = df.iloc[0, :].fillna(method=fillna_method) + (delimiter + df.iloc[1,:]).fillna('')
+            else:
+                df.iloc[0, :] = df.iloc[0, :].fillna('') + (delimiter + df.iloc[1,:]).fillna('')
             df = df.drop([1,], axis=0)
 
         df.columns = df.iloc[0,:]
