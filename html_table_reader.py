@@ -73,7 +73,7 @@ class html_table_reader(object):
         #df.index = [str(i) for i in df.index]
         #df.columns = [str(i) for i in df.columns]
         if df.empty:
-            df = pd.read_html(e_table.text)
+            df = pd.read_html(e_table.prettify(), encoding='utf8')
         return df
 
     def title_standardize(self, df, delimiter='=>', b0 = True, fillna_method='ffill'):
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     df = html_table_reader.table_tr_td(s,None)
     #df.to_csv('df.csv', encoding='utf_8_sig')
     print df
-    print df.empty
+    #print df.empty
     #print df.iloc[0,0].replace(u'\xa0','')
     #print html_table_reader.standardize(df)
-    print pd.read_html(s,encoding='utf8')
+    #print pd.read_html(s,encoding='utf8')
