@@ -10,6 +10,7 @@
 import sys
 import os
 import selenium.webdriver
+import bs4
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
@@ -18,7 +19,12 @@ sys.setdefaultencoding('utf8')
 
 class PhantomJS_driver(object):
     def __init__(self):
-        pass
+        self.headers = {'Accept': '*/*',
+                       'Accept-Language': 'en-US,en;q=0.8',
+                       'Cache-Control': 'max-age=0',
+                       'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
+                       'Connection': 'keep-alive'
+                       }
 
     def initialization(self):
         # 初始化浏览器
@@ -36,4 +42,7 @@ class PhantomJS_driver(object):
         return driver.page_source
 
 if __name__ == '__main__':
-    pass
+    PhantomJS_driver = PhantomJS_driver()
+    bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
+    #print bs_obj.prettify(encoding='utf8')
+    #print bs_obj
