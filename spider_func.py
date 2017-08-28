@@ -13,6 +13,7 @@ import json
 import html_table_reader
 import re
 import pandas as pd
+import bs4
 html_table_reader = html_table_reader.html_table_reader()
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
@@ -29,7 +30,10 @@ class spider_func(object):
 
     def df_output(self, bs_obj, spider_id, parcel_status):
         spider_args = self.spider_args[spider_id]
-        e_table = bs_obj.find(spider_args['table_tag'], attrs=spider_args['table_attrs'])
+        if isinstance(bs_obj, bs4.element.Tag) and bs_obj.name == spider_args['table_tag']:
+            e_table = bs_obj
+        else:
+            e_table = bs_obj.find(spider_args['table_tag'], attrs=spider_args['table_attrs'])
         df = html_table_reader.table_tr_td(e_table)
         monitor_extra = ''
         if parcel_status == 'onsell' and 'extra' in spider_args:
