@@ -14,6 +14,7 @@ import html_table_reader
 import re
 import pandas as pd
 import bs4
+import copy
 html_table_reader = html_table_reader.html_table_reader()
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
@@ -30,17 +31,18 @@ class spider_func(object):
 
     def df_output(self, bs_obj, spider_id, parcel_status):
         spider_args = self.spider_args[spider_id]
+        e_table = copy.deepcopy(bs_obj)
 
         # 运行pretreatment中的函数
         if 'pretreatment' in spider_args:
             for s in spider_args['pretreatment']:
                 func = getattr(self,s)
-                bs_obj = func(bs_obj,parcel_status)
+                e_table = func(bs_obj,parcel_status)
 
-        if isinstance(bs_obj, bs4.element.Tag) and bs_obj.name == spider_args['table_tag']:
-            e_table = bs_obj
+        if isinstance(e_table, bs4.element.Tag) and e_table.name == spider_args['table_tag']:
+            pass
         else:
-            e_table = bs_obj.find(spider_args['table_tag'], attrs=spider_args['table_attrs'])
+            e_table = e_table.find(spider_args['table_tag'], attrs=spider_args['table_attrs'])
 
         df = html_table_reader.table_tr_td(e_table)
 
@@ -60,7 +62,8 @@ class spider_func(object):
         else:
             e_ps = bs_obj.find(extra_agrs['tag'], attrs=extra_agrs['attrs']).find_all(extra_agrs['row_tag'])
 
-        s_list = [e_p.get_text(strip=True) for e_p in e_ps if isinstance(e_p, bs4.element.Tag) and re.search(ur'时间',e_p.get_text())]
+        re_s = ur'时间|\d{4}年\d{1,2}月\d{1,2}日'
+        s_list = [e_p.get_text(strip=True) for e_p in e_ps if isinstance(e_p, bs4.element.Tag) and re.search(re_s,e_p.get_text())]
         return pd.DataFrame({'date_info': ur'\n'.join(s_list)}, index=[0,])
 
     def the_last_table(self,bs_obj,parcel_status):
