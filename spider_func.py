@@ -44,6 +44,12 @@ class spider_func(object):
         else:
             e_table = e_table.find(spider_args['table_tag'], attrs=spider_args['table_attrs'])
 
+        # 运行aftertreatment中的函数
+        if 'aftertreatment' in spider_args:
+            for s in spider_args['aftertreatment']:
+                func = getattr(self,s)
+                e_table = func(e_table,parcel_status)
+
         df = html_table_reader.table_tr_td(e_table)
 
         monitor_extra = ''
@@ -61,9 +67,11 @@ class spider_func(object):
             e_ps = bs_obj
         else:
             e_ps = bs_obj.find(extra_agrs['tag'], attrs=extra_agrs['attrs']).find_all(extra_agrs['row_tag'])
-
         re_s = ur'时间|\d{4}年\d{1,2}月\d{1,2}日'
-        s_list = [e_p.get_text(strip=True) for e_p in e_ps if isinstance(e_p, bs4.element.Tag) and re.search(re_s,e_p.get_text())]
+
+        s_list = [e_p.get_text(strip=True) for e_p in e_ps if isinstance(e_p, bs4.element.Tag)]
+        s_list = [s for s in s_list if re.search(re_s,s) and len(s) < 200]
+        #pd.DataFrame([len(s) for s in s_list]).to_csv('test.csv', mode='a', encoding='utf_8_sig')
         return pd.DataFrame({'date_info': ur'\n'.join(s_list)}, index=[0,])
 
     def the_last_table(self,bs_obj,parcel_status):
@@ -72,6 +80,9 @@ class spider_func(object):
             e_table = e_table.table
         return e_table
 
+    def next_table(self,bs_obj,parcel_status):
+        return bs_obj.table
+
     def shaoxing(self,bs_obj,parcel_status):
         if parcel_status == 'sold':
             bs_obj = bs_obj.find('td', attrs={'id': 'TDContent', 'class': 'infodetail'})
@@ -79,6 +90,15 @@ class spider_func(object):
 
     def hangzhouyuhang(self,bs_obj,parcel_status):
         return bs_obj.find("div", class_="TRS_Editor")
+
+    def quzhou(self,bs_obj,parcel_status):
+        if parcel_status == 'onsell':
+            return bs_obj.find('table', id='Tbjuti').table
+        else:
+            e_table = bs_obj.find('table', style='WIDTH: 786px')
+            if not e_table:
+                e_table = bs_obj.find('table', id='Tbjuti').table
+            return e_table
 
 if __name__ == '__main__':
     spider_func = spider_func()
