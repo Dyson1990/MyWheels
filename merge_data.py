@@ -7,6 +7,7 @@
     @time: 2017/9/7 14:50
 --------------------------------
 """
+import random
 import sys
 import os
 import pandas as pd
@@ -35,8 +36,24 @@ class merge_data(object):
         df.index = range(df.shape[0])
         df.to_excel(os.path.join(output_path,output_filename))
 
+    def rename_xls(self, filenames):
+        path = os.path.split(filenames[0])[0]
+        filenames = [os.path.split(filename)[1] for filename in filenames]
+        print filenames[0]
+        print 'path',path
+        max_len = min(max([len(filename) for filename in filenames]),8)
+        rand_ints = random.sample(xrange(pow(10,max_len), pow(10,max_len+1)), len(filenames))
+        for i in xrange(len(filenames)):
+            filename = filenames[i]
+            print os.path.join(path, filename)
+            if os.path.isfile(os.path.join(path, filename)) == True:
+                newname = str(rand_ints[i]) + os.path.splitext(filename)[1]
+                os.rename(os.path.join(path, filename), os.path.join(path, newname))
+
+
 if __name__ == '__main__':
     merge_data = merge_data()
-    path = r'C:\Users\lenovo\Desktop\huzhou'
+    path = r'C:\Users\lenovo\Desktop\Download'
     filenames = merge_data.get_filenames(path, '.xls')
-    merge_data.merge_xls(filenames, path, r'output.xls')
+    #merge_data.rename_xls(filenames)
+    merge_data.merge_xls(filenames,path,'output.xls')
