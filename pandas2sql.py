@@ -33,6 +33,7 @@ class pandas2sql(object):
     def df2sql(self, df, tablename, user, passwd, host, database):
         engine = self.sql_engine(user=user,password=passwd,host=host,database=database)
         pd.io.sql.to_sql(df, tablename, engine, if_exists='append', chunksize=1000, index=False)
+        return
 
 
 if __name__ == '__main__':
