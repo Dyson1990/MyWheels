@@ -39,7 +39,9 @@ class PhantomJS_driver(object):
     def get_html(self, url):
         driver = self.initialization()
         driver.get(url)
-        return driver.page_source
+        html = driver.page_source
+        driver.close()
+        return html
 
 if __name__ == '__main__':
     PhantomJS_driver = PhantomJS_driver()
