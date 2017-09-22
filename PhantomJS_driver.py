@@ -51,9 +51,9 @@ if __name__ == '__main__':
     driver = PhantomJS_driver.initialization()
     driver.get('https://gaokao.chsi.com.cn/zzbm/mdgs/detail.action?oid=476733931&lx=1')
     #/html/body/div[2]/div[1]/div/form/a[3]
-    import re
-    driver.page_source
-    print re.search(u'下一页', driver.find_element_by_class_name('pageDiv').text)
+    #import re
+    #driver.page_source
+    #print re.search(u'下一页', driver.find_element_by_class_name('pageDiv').text)
     #driver.find_element_by_link_text('下一页>>').click()
     #print driver.find_element_by_class_name('pageDiv').text
     driver.close()
