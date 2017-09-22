@@ -45,6 +45,15 @@ class PhantomJS_driver(object):
 
 if __name__ == '__main__':
     PhantomJS_driver = PhantomJS_driver()
-    bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
+    #bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
+    driver = PhantomJS_driver.initialization()
+    driver.get('https://gaokao.chsi.com.cn/zzbm/mdgs/detail.action?oid=476733931&lx=1')
+    #/html/body/div[2]/div[1]/div/form/a[3]
+    import re
+    driver.page_source
+    print re.search(u'下一页', driver.find_element_by_class_name('pageDiv').text)
+    #driver.find_element_by_link_text('下一页>>').click()
+    #print driver.find_element_by_class_name('pageDiv').text
+    driver.close()
