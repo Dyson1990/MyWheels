@@ -20,7 +20,7 @@ class merge_data(object):
     def __init__(self):
         pass
 
-    def get_filenames(self, path, extension):
+    def get_filepaths(self, path, extension):
         """返回一个文件夹下所有的对应扩展名的文件名"""
         all_files = os.listdir(path) # 全部文件名
         # 获取扩展名，筛选扩展名是不是所需要的
@@ -29,12 +29,19 @@ class merge_data(object):
         # 合并路径和文件名
         return [os.path.join(path, s) for s in filenames]
 
-    def merge_xls(self, filenames, output_path, output_filename):
+    def merge_xls(self, filepaths, output_path, output_filename):
         df = pd.DataFrame([])
-        for filename in filenames:
+        for filename in filepaths:
             df = df.append(pd.read_excel(filename))
         df.index = range(df.shape[0])
         df.to_excel(os.path.join(output_path,output_filename))
+
+    def merge_csv(self, filepaths, output_path, output_filename):
+        df = pd.DataFrame([])
+        for filename in filepaths:
+            df = df.append(pd.read_csv(filename))
+        df.index = range(df.shape[0])
+        df.to_csv(os.path.join(output_path,output_filename), encoding='utf_8_sig')
 
     def rename_xls(self, filenames):
         path = os.path.split(filenames[0])[0]
@@ -53,7 +60,7 @@ class merge_data(object):
 
 if __name__ == '__main__':
     merge_data = merge_data()
-    path = r'C:\Users\lenovo\Desktop\Download'
-    filenames = merge_data.get_filenames(path, '.xls')
+    path = r'C:\Users\lenovo\Desktop\Projects\PythonProgramming\crawler\data'
+    filepaths = merge_data.get_filepaths(path, '.csv')
     #merge_data.rename_xls(filenames)
-    merge_data.merge_xls(filenames,path,'output.xls')
+    merge_data.merge_csv(filepaths,path,u'2017年高校专项计划报名审核通过名单公示.csv')
