@@ -62,25 +62,41 @@ class PhantomJS_driver(object):
         self.headers = {'Accept': '*/*',
                        'Accept-Language': 'en-US,en;q=0.8',
                        'Cache-Control': 'max-age=0',
-                       'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
+                       #'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
                        'Connection': 'keep-alive'
                        }
 
-    def initialization(self):
-        # 初始化浏览器
+    def initialization(self, **kwargs):
+        """
+        service_args = {
+            '--load-images':'no',
+            '--disk-cache':'yes',
+            '--ignore-ssl-errors':'true'
+        }
+        """
+        # 设置header
         desired_capabilities = selenium.webdriver.DesiredCapabilities.PHANTOMJS.copy()
 
         for key, value in self.headers.iteritems():
             desired_capabilities['phantomjs.page.customHeaders.{}'.format(key)] = value
         desired_capabilities['phantomjs.page.customHeaders.User-Agent'] = self.user_agent#'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'
 
-        return selenium.webdriver.PhantomJS(desired_capabilities=desired_capabilities)
+        # 优化设置
+        service_args = {
+            '--load-images':'no',
+            '--disk-cache':'yes',
+            '--ignore-ssl-errors':'true'
+        }
+        service_args.update(kwargs)
+        service_args = ['%s=%s' %(key, service_args[key]) for key in service_args]
+
+        return selenium.webdriver.PhantomJS(desired_capabilities=desired_capabilities, service_args=service_args)
 
     def get_html(self, url):
         driver = self.initialization()
         driver.get(url)
         html = driver.page_source
-        driver.close()
+        driver.quit()
         return html
 
 if __name__ == '__main__':
@@ -89,8 +105,10 @@ if __name__ == '__main__':
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
     driver = PhantomJS_driver.initialization()
-    driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
-    driver.get('https://www.google.com')
+    #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
+    #driver.get('https://www.google.com')
+    print \
+        dir(driver)
 
     #/html/body/div[2]/div[1]/div/form/a[3]
     #import re
@@ -98,7 +116,7 @@ if __name__ == '__main__':
     #print re.search(u'下一页', driver.find_element_by_class_name('pageDiv').text)
     #driver.find_element_by_link_text('下一页>>').click()
     #print driver.find_element_by_class_name('pageDiv').text
-    driver.close()
+    driver.quit()
 
 
     """
