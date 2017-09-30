@@ -60,7 +60,7 @@ class merge_data(object):
 
 if __name__ == '__main__':
     merge_data = merge_data()
-    path = r'C:\Users\lenovo\Desktop\Projects\PythonProgramming\crawler\data'
+    path = r'D:\Users\lenovo\Desktop\Projects\PythonProgramming\crawler\data'
     filepaths = merge_data.get_filepaths(path, '.csv')
     #merge_data.rename_xls(filenames)
-    merge_data.merge_csv(filepaths,path,u'2017年高校自主招生录取考生名单.csv')
+    merge_data.merge_csv(filepaths,path,u'2017年综合评价录取名单.csv')

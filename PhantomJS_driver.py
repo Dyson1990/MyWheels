@@ -107,8 +107,10 @@ if __name__ == '__main__':
     driver = PhantomJS_driver.initialization()
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.google.com')
-    print \
-        dir(driver)
+    driver.get('http://www.hzplanning.gov.cn/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10253')
+    driver.find_element_by_class_name('notices-img809').click()
+    print driver.find_element_by_tag_name('img').text
+
 
     #/html/body/div[2]/div[1]/div/form/a[3]
     #import re
