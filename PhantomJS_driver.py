@@ -83,13 +83,16 @@ class PhantomJS_driver(object):
 
         # 优化设置
         service_args = {
-            '--load-images':'no',
-            '--disk-cache':'yes',
-            '--ignore-ssl-errors':'true'
+            'load_images':'no',
+            'disk_cache':'yes',
+            'ignore_ssl_errors':'true'
         }
+        #print service_args
         service_args.update(kwargs)
-        service_args = ['%s=%s' %(key, service_args[key]) for key in service_args]
+        #print service_args
+        service_args = ['--%s=%s' %(key.replace('_','-'), service_args[key]) for key in service_args]
 
+        #print service_args
         return selenium.webdriver.PhantomJS(desired_capabilities=desired_capabilities, service_args=service_args)
 
     def get_html(self, url):
@@ -104,7 +107,7 @@ if __name__ == '__main__':
     #bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
-    driver = PhantomJS_driver.initialization()
+    driver = PhantomJS_driver.initialization(load_images='yes')
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.google.com')
     driver.get('http://www.hzplanning.gov.cn/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10253')
