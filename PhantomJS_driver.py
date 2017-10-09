@@ -16,7 +16,7 @@ import random
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
 sys.setdefaultencoding('utf8')
-
+import requests
 
 class PhantomJS_driver(object):
     def __init__(self):
@@ -62,7 +62,7 @@ class PhantomJS_driver(object):
         self.headers = {'Accept': '*/*',
                        'Accept-Language': 'en-US,en;q=0.8',
                        'Cache-Control': 'max-age=0',
-                       #'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
+                       'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
                        'Connection': 'keep-alive'
                        }
 
@@ -102,18 +102,23 @@ class PhantomJS_driver(object):
         driver.quit()
         return html
 
+    def get_img(self, url, targetfile):
+        r = requests.get(url, headers=self.headers)
+        with open(targetfile, "wb") as code:
+            code.write(r.content)
+
 if __name__ == '__main__':
     PhantomJS_driver = PhantomJS_driver()
     #bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
-    driver = PhantomJS_driver.initialization(load_images='yes')
+    driver = PhantomJS_driver.initialization(load_images='yes', web_security='false')
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.google.com')
-    driver.get('http://www.hzplanning.gov.cn/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10253')
-    driver.find_element_by_class_name('notices-img809').click()
-    print driver.find_element_by_tag_name('img').text
+    #CallJS = 'return download("http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg");'
+    #data = driver.execute_script(FuncionsJS + CallJS)
 
+    PhantomJS_driver.get_img('http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg', r'C:\Users\Administrator\Desktop\text.jpg')
 
     #/html/body/div[2]/div[1]/div/form/a[3]
     #import re
