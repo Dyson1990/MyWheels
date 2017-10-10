@@ -9,7 +9,7 @@
 --------------------------------
 """
 
-import MySQLdb as mysql
+import pymysql as mysql
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -29,13 +29,13 @@ class mysql_connecter(object):
     def __init__(self):
         pass
     
-    def connect(self,sql,args=None,ip='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
+    def connect(self,sql,args=None,host='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
         """
         :return: list
         """
         con = ''
         try:
-            con = mysql.connect(ip,user,password,dbname,charset = charset)
+            con = mysql.connect(host,user,password,dbname,charset = charset)
             cur = con.cursor()
             
             # 多条SQL语句的话，循环执行
@@ -55,10 +55,10 @@ class mysql_connecter(object):
                 
         return [list(t) for t in data]
 
-    def connect0(self,sql,args=None,ip='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
+    def connect0(self,sql,args=None,host='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
         # 初始化数据库连接:
         # '数据库类型+数据库驱动名称://用户名:口令@机器地址:端口号/数据库名'
-        db_connect_str = 'mysql+pymysql://{}:{}@{}/{}?charset={}'.format(user,password,ip,dbname,charset)
+        db_connect_str = 'mysql+pymysql://{}:{}@{}/{}?charset={}'.format(user,password,host,dbname,charset)
         engine = sqlalchemy.create_engine(db_connect_str)
         # 创建DBSession类型:
         DB_session = sqlalchemy.orm.sessionmaker(bind=engine)

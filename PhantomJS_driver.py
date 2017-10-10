@@ -102,7 +102,7 @@ class PhantomJS_driver(object):
         driver.quit()
         return html
 
-    def get_img(self, url, targetfile):
+    def get_file(self, url, targetfile):
         r = requests.get(url, headers=self.headers)
         with open(targetfile, "wb") as code:
             code.write(r.content)
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     #CallJS = 'return download("http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg");'
     #data = driver.execute_script(FuncionsJS + CallJS)
 
-    PhantomJS_driver.get_img('http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg', r'C:\Users\Administrator\Desktop\text.jpg')
+    #PhantomJS_driver.get_img('http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg', r'C:\Users\Administrator\Desktop\text.jpg')
 
     #/html/body/div[2]/div[1]/div/form/a[3]
     #import re

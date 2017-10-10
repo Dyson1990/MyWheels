@@ -15,6 +15,8 @@ import re
 import pandas as pd
 import bs4
 import copy
+import PhantomJS_driver
+PhantomJS_driver = PhantomJS_driver.PhantomJS_driver()
 html_table_reader = html_table_reader.html_table_reader()
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
@@ -28,6 +30,8 @@ class spider_func(object):
     def __init__(self):
         with open(os.getcwd() + r'\spider_args.json') as f:
             self.spider_args = json.load(f, encoding='utf8')
+
+####################################以下是土地公告部分##################################
 
     def df_output(self, bs_obj, spider_id, parcel_status):
         spider_args = self.spider_args[spider_id]
@@ -99,6 +103,43 @@ class spider_func(object):
             if not e_table:
                 e_table = bs_obj.find('table', id='Tbjuti').table
             return e_table
+
+####################################以下是规划部分##################################
+
+    def city_planning(self, spider_id, title, bs_obj, **kwargs):
+        file_path = os.getcwd() + r'\\files\\'
+        spider_args = self.spider_args[spider_id]
+        file_list = [os.path.splitext(s)[0] for s in os.listdir(file_path)]
+        file_set = set(file_list)
+
+        #print "==================>", file_path, file_set, title
+        if title not in file_set:
+            bs_obj = copy.deepcopy(bs_obj)
+            l = []
+            for func0 in spider_args['function']:
+                func = getattr(self, func0)
+                index0 = spider_args['index'][func0]
+                #print "----------------------------func:", func0, index0
+                l.append(func(file_path, title, bs_obj, index0))
+            return pd.DataFrame({'文件名':l}, index=["文件%s" %i for i in xrange(len(l))])
+
+    def txt_output(self, file_path, title, bs_obj, index0):
+        e = bs_obj.find(index0['tag'], attrs=index0['attrs'])
+        if e:
+            with open(file_path + title + '.txt', 'wb') as f:
+                f.write(e.get_text())
+            return title + '.txt'
+
+    def file_output(self, file_path, title, bs_obj, index0):
+        e_a = bs_obj.find(index0['tag'], text=re.compile('|'.join([r'\.%s' %s for s in index0['file_type']]))) #r"\.rar|\.zip"
+        if e_a:
+            PhantomJS_driver.get_file(e_a.get('href'), file_path + title + e_a.get_text(strip=True))
+            return title + e_a.get_text(strip=True)
+
+
+
+
+
 
 if __name__ == '__main__':
     spider_func = spider_func()
