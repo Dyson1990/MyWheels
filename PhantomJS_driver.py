@@ -106,6 +106,7 @@ class PhantomJS_driver(object):
         r = requests.get(url, headers=self.headers)
         with open(targetfile, "wb") as code:
             code.write(r.content)
+            print "====>>>Successfully saving %s" %targetfile
 
 if __name__ == '__main__':
     PhantomJS_driver = PhantomJS_driver()
@@ -113,8 +114,10 @@ if __name__ == '__main__':
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
     driver = PhantomJS_driver.initialization(load_images='yes', web_security='false')
+
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
-    #driver.get('https://www.google.com')
+    #driver.get('https://www.baidu.com')
+    help(driver.find_elements)
     #CallJS = 'return download("http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg");'
     #data = driver.execute_script(FuncionsJS + CallJS)
 
