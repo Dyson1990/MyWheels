@@ -15,11 +15,7 @@ import requests
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
 sys.setdefaultencoding('utf8')
-import set_log  # log_obj.debug(文本)  "\x1B[1;32;41m (文本)\x1B[0m"
 
-log_obj = set_log.Logger('requests_manager.log', set_log.logging.WARNING,
-                         set_log.logging.DEBUG)
-log_obj.cleanup('requests_manager.log', if_cleanup=True)  # 是否需要在每次运行程序前清空Log文件
 
 user_agent_list = [
     "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 "
