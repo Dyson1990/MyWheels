@@ -117,7 +117,7 @@ if __name__ == '__main__':
 
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.baidu.com')
-    help(driver.find_elements)
+    help(driver.page_source)
     #CallJS = 'return download("http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg");'
     #data = driver.execute_script(FuncionsJS + CallJS)
 
