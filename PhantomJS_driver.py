@@ -7,11 +7,14 @@
     @time: 2017/8/23 15:56
 --------------------------------
 """
+import copy
 import sys
 import os
 import selenium.webdriver
 import bs4
 import random
+
+import time
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
@@ -64,7 +67,7 @@ class PhantomJS_driver(object):
     def __init__(self):
         pass
 
-    def initialization(self, **kwargs):
+    def initialization(self, time_out=180, **kwargs):
         """
         service_args = {
             '--load-images':'no',
@@ -93,16 +96,20 @@ class PhantomJS_driver(object):
             'disk_cache':'yes',
             'ignore_ssl_errors':'true'
         }
+
         #print service_args
         service_args.update(kwargs)
         #print service_args
         service_args = ['--%s=%s' %(key.replace('_','-'), service_args[key]) for key in service_args]
 
         #print service_args
-        return selenium.webdriver.PhantomJS(desired_capabilities=desired_capabilities, service_args=service_args)
+        driver = selenium.webdriver.PhantomJS(desired_capabilities=desired_capabilities, service_args=service_args)
+        driver.set_page_load_timeout(time_out)
+        return driver
 
     def get_html(self, url):
         driver = self.initialization()
+        driver.get('about:blank')
         driver.get(url)
         html = driver.page_source
         driver.quit()
@@ -123,7 +130,16 @@ if __name__ == '__main__':
 
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.baidu.com')
-    help(driver.page_source)
+    driver.get('http://www.fangdi.com.cn/MarketAnalysis.htm')
+    driver.switch_to.frame('Report')
+    #buttons = driver.find_elements_by_tag_name('a')
+
+    print driver.page_source
+
+    #http://www.yhjzcx.com/WebSite/ListPage_Project.aspx?id=&pgid=acd1bd96-ccad-48cf-acf3-e27c10800380&segmentName=&segmentID=&buildUnitName=&curPage=1
+    #view('80bdf865-45a0-429c-bc27-a7ef85ab600c');
+    #http://www.yhjzcx.com/WebSite/DetailPage_Project.aspx?id=80bdf865-45a0-429c-bc27-a7ef85ab600c&pgid=acd1bd96-ccad-48cf-acf3-e27c10800380
+
     #CallJS = 'return download("http://pic32.photophoto.cn/20140902/0017030232402988_b.jpg");'
     #data = driver.execute_script(FuncionsJS + CallJS)
 
