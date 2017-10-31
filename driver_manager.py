@@ -83,6 +83,7 @@ class driver_manager(object):
         driver = selenium.webdriver.Chrome(chrome_options=options)
 
         #display.stop()
+        driver.set_window_size(20, 20)
         return driver
 
     def PhantomJS(self, **kwargs):
@@ -146,6 +147,8 @@ if __name__ == '__main__':
                                   engine='Chrome')
     with open(r'C:\Users\Administrator\Desktop\test.html', 'w') as f:
         f.write(s)
+
+    driver = driver_manager.initialization(engine='Chrome')
     #driver.quit()
 
 
