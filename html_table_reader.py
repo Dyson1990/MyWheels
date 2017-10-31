@@ -110,166 +110,69 @@ class html_table_reader(object):
 
 if __name__ == '__main__':
     s = """
-<table class="publicityCss" id="_ctl9_dataGrid" style="width:100%;border-collapse:collapse;" cellspacing="0" border="0">
-	<tbody><tr class="thead even">
-		<td>项目名称</td><td style="width:115px;">公示类别</td><td style="width:80px;">公示日期</td><td style="width:80px;">截止日期</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10369.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10369" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10369" target="_blank">
-                            钱江商城（水晶城购物中心）地下非机动车库改...<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-30</td><td align="center">2017-10-14</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10374.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10374" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10374" target="_blank">
-                            杭政储出（2016）37号地块商品住宅兼容商业商...<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10373.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10373" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10373" target="_blank">
-                            丁桥单元JG0406-06地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10372.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10372" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10372" target="_blank">
-                            杭州市丁桥单元JG0405-11地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10371.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10371" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10371" target="_blank">
-                            杭州市丁桥单元JG0405-12地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10370.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10370" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10370" target="_blank">
-                            汽车南站和望江东路公交首末站临时过渡工程<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10368.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10368" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10368" target="_blank">
-                            彭埠单元B1/B2-22地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10367.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10367" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10367" target="_blank">
-                            杭州市滨江区西兴北单元M1-11地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10366.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10366" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10366" target="_blank">
-                            杭州朕昊企业管理有限公司车间二（补办）项目<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10365.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10365" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10365" target="_blank">
-                            杭州市萧山区南阳街道黄山庙迁建项目<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10364.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10364" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10364" target="_blank">
-                            杭州迪威机械有限公司旧厂区（房）改造项目<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-13</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10355.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10355" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10355" target="_blank">
-                            杭州萧山胜达新建厂房项目<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-29</td><td align="center">2017-10-14</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10363.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10363" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10363" target="_blank">
-                            滨江区东冠单元C6-02地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-28</td><td align="center">2017-10-12</td>
-	</tr><tr class="DGtable_item even">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10362.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10362" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10362" target="_blank">
-                            彭埠单元R21-19地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-28</td><td align="center">2017-10-12</td>
-	</tr><tr class="DGtable_item odd">
-		<td align="left">
-                        <div src="http://www.hzplanning.gov.cn/winstarframework/desktopmodules/PointerPic/10361.jpg" link="http://map.hzplanning.gov.cn/module/index.html?lx=XM_PQGS&amp;value=10361" style="display: none;">
-                        </div>
-                        <img src="../../../Themes/Skins/Spring/Citizen/ico.gif" border="0">
-                        <a href="/DesktopModules/GHJ.PlanningNotice/PublicityInfoPQGS.aspx?GUID=10361" target="_blank">
-                            彭埠单元（城东新城范围）B1/B2-17地块<img src="../../images/new.gif"></a>
-                    </td><td align="left">
-                        建设工程规划公示
-                    </td><td align="center">2017-09-28</td><td align="center">2017-10-12</td>
-	</tr>
-</tbody></table>"""
-    html_table_reader = html_table_reader()
-    df = html_table_reader.table_tr_td(s,None)
+<table cellpadding="0" cellspacing="0" border="0">
+					<tbody><tr style="color:#ffffff;">
+						<td width="35px" class="xz_line" height="24px" bgcolor="#8BB3D7" align="center">序号</td><td width="805px" class="xz_line" bgcolor="#8BB3D7" align="center">文件名</td><td width="48px" bgcolor="#8BB3D7" align="center">下载</td>
+					</tr>
+					
+					 
+						<tr>
+							<td class="xz_line" height="24px" bgcolor="#FAFAFA" align="center">1</td><td class="xz_line" bgcolor="#FAFAFA" align="left">10号工业挂牌出让文件.doc</td><td bgcolor="#FAFAFA" align="center">
+							<a href="#" onclick="isLogin('1333','10号工业挂牌出让文件.doc');" cssclass="xz_pic">
+								<img src="images/list_09.jpg" title="点击下载" alt="点击下载">
+							</a></td>
+						<!-- 	
+								
+								
+							
+							<a href=" download?RECORDID=1333&amp;fileName=10%BA%C5%B9%A4%D2%B5%B9%D2%C5%C6%B3%F6%C8%C3%CE%C4%BC%FE.doc" class="xz_pic"><img src="images/list_09.jpg" title="点击下载" alt="点击下载" /></a></td>
+						 -->
+						</tr>
+					 
+					
+					 
+						<tr>
+							<td class="xz_line" height="24px" bgcolor="#FAFAFA" align="center">2</td><td class="xz_line" bgcolor="#FAFAFA" align="left">挂牌授权委托书和法定代表人证明书.doc</td><td bgcolor="#FAFAFA" align="center">
+							<a href="#" onclick="isLogin('1244','挂牌授权委托书和法定代表人证明书.doc');" cssclass="xz_pic">
+								<img src="images/list_09.jpg" title="点击下载" alt="点击下载">
+							</a></td>
+						<!-- 	
+								
+								
+							
+							<a href=" download?RECORDID=1244&amp;fileName=%B9%D2%C5%C6%CA%DA%C8%A8%CE%AF%CD%D0%CA%E9%BA%CD%B7%A8%B6%A8%B4%FA%B1%ED%C8%CB%D6%A4%C3%F7%CA%E9.doc" class="xz_pic"><img src="images/list_09.jpg" title="点击下载" alt="点击下载" /></a></td>
+						 -->
+						</tr>
+					 
+					
+					 
+						<tr>
+							<td class="xz_line" height="24px" bgcolor="#FAFAFA" align="center">3</td><td class="xz_line" bgcolor="#FAFAFA" align="left">象山经济开发区城东工业园工业待出让C-2-07-01地块规划设计条件.pdf</td><td bgcolor="#FAFAFA" align="center">
+							<a href="#" onclick="isLogin('1245','象山经济开发区城东工业园工业待出让C-2-07-01地块规划设计条件.pdf');" cssclass="xz_pic">
+								<img src="images/list_09.jpg" title="点击下载" alt="点击下载">
+							</a></td>
+						<!-- 	
+								
+								
+							
+							<a href=" download?RECORDID=1245&amp;fileName=%CF%F3%C9%BD%BE%AD%BC%C3%BF%AA%B7%A2%C7%F8%B3%C7%B6%AB%B9%A4%D2%B5%D4%B0%B9%A4%D2%B5%B4%FD%B3%F6%C8%C3C-2-07-01%B5%D8%BF%E9%B9%E6%BB%AE%C9%E8%BC%C6%CC%F5%BC%FE.pdf" class="xz_pic"><img src="images/list_09.jpg" title="点击下载" alt="点击下载" /></a></td>
+						 -->
+						</tr>
+					 
+					
+				</tbody></table>"""
+    #html_table_reader = html_table_reader()
+    #df = html_table_reader.table_tr_td(s,None)
     #df.to_csv('df.csv', encoding='utf_8_sig')
-    print df
+    #print df
     #print df.empty
     #print df.iloc[0,0].replace(u'\xa0','')
     #print html_table_reader.standardize(df)
     #print pd.read_html(s,encoding='utf8')
+
+    bs_obj = bs4.BeautifulSoup(s,'html.parser')
+    e_table = bs_obj.find('table')
+    e_tr = e_table.find_all('tr')[-1]
+    print e_tr
+    #print e_tr.string
+    #print e_tr.a.string

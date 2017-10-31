@@ -83,6 +83,7 @@ class PhantomJS_driver(object):
                        'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
                        'Connection': 'keep-alive'
                        }
+        print "self.user_agent: ",self.user_agent
 
         desired_capabilities = selenium.webdriver.DesiredCapabilities.PHANTOMJS.copy()
 
@@ -126,15 +127,27 @@ if __name__ == '__main__':
     #bs_obj = bs4.BeautifulSoup(PhantomJS_driver.get_html("http://www.zjtzgtj.gov.cn/col/col21069/index.html"),'html.parser')
     #print bs_obj.prettify(encoding='utf8')
     #print bs_obj
-    driver = PhantomJS_driver.initialization(load_images='yes', web_security='false')
+    #driver = PhantomJS_driver.initialization(load_images='yes', web_security='false')
 
     #driver.set_page_load_timeout(2) #selenium.common.exceptions.TimeoutException
     #driver.get('https://www.baidu.com')
-    driver.get('http://www.fangdi.com.cn/MarketAnalysis.htm')
-    driver.switch_to.frame('Report')
+
+    #print driver.page_source
+
+    chromedriver = r"C:\Python27\Lib\MyWheels\chromedriver.exe"
+    options = selenium.webdriver.ChromeOptions()
+    #options.add_argument('--profile-directory=Default')
+    options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
+    #options.add_argument('--user-data-dir=C:\Users\admin\AppData\Local\Google\Chrome\User Data\Profile 4')
+    driver = selenium.webdriver.Chrome(executable_path=chromedriver, chrome_options = options)
+
+    driver.get('https://www.usnews.com/education/best-global-universities')
+    print driver.page_source
+    #print driver.find_element_by_tag_name('tr').4
+
     #buttons = driver.find_elements_by_tag_name('a')
 
-    print driver.page_source
+    #print driver.page_source
 
     #http://www.yhjzcx.com/WebSite/ListPage_Project.aspx?id=&pgid=acd1bd96-ccad-48cf-acf3-e27c10800380&segmentName=&segmentID=&buildUnitName=&curPage=1
     #view('80bdf865-45a0-429c-bc27-a7ef85ab600c');
