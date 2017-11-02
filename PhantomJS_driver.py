@@ -65,7 +65,14 @@ user_agent_list = [
 
 class PhantomJS_driver(object):
     def __init__(self):
-        pass
+        # 设置header
+        self.user_agent = random.choice(user_agent_list)
+        self.headers = {'Accept': '*/*',
+                       'Accept-Language': 'en-US,en;q=0.8',
+                       'Cache-Control': 'max-age=0',
+                       'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
+                       'Connection': 'keep-alive'
+                       }
 
     def initialization(self, time_out=180, **kwargs):
         """
@@ -75,14 +82,6 @@ class PhantomJS_driver(object):
             '--ignore-ssl-errors':'true'
         }
         """
-        # 设置header
-        self.user_agent = random.choice(user_agent_list)
-        self.headers = {'Accept': '*/*',
-                       'Accept-Language': 'en-US,en;q=0.8',
-                       'Cache-Control': 'max-age=0',
-                       'User-Agent': self.user_agent,#'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36',
-                       'Connection': 'keep-alive'
-                       }
         print "self.user_agent: ",self.user_agent
 
         desired_capabilities = selenium.webdriver.DesiredCapabilities.PHANTOMJS.copy()
