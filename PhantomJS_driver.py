@@ -139,6 +139,7 @@ if __name__ == '__main__':
     options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
     #options.add_argument('--user-data-dir=C:\Users\admin\AppData\Local\Google\Chrome\User Data\Profile 4')
     driver = selenium.webdriver.Chrome(executable_path=chromedriver, chrome_options = options)
+    driver.get_screenshot_as_file()
 
     driver.get('https://www.usnews.com/education/best-global-universities')
     print driver.page_source
