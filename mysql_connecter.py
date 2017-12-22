@@ -14,6 +14,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
 import set_log
+import pandas as pd
+import numpy as np
+from itertools import chain
+
 
 #import sqlalchemy
 #import sqlalchemy.ext.declarative
@@ -29,7 +33,7 @@ class mysql_connecter(object):
     def __init__(self):
         pass
     
-    def connect(self,sql,args=None,host='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
+    def connect(self,sql,args=None,host='localhost',user='spider',password = 'jlspider', dbname = 'spider', charset='utf8'):
         """
         :return: list
         """
@@ -55,20 +59,50 @@ class mysql_connecter(object):
                 
         return [list(t) for t in data]
 
-    def connect0(self,sql,args=None,host='192.168.1.124',user='user2',password = '123456', dbname = 'data_statistics', charset='utf8'):
-        # 初始化数据库连接:
-        # '数据库类型+数据库驱动名称://用户名:口令@机器地址:端口号/数据库名'
-        db_connect_str = 'mysql+pymysql://{}:{}@{}/{}?charset={}'.format(user,password,host,dbname,charset)
-        engine = sqlalchemy.create_engine(db_connect_str)
-        # 创建DBSession类型:
-        DB_session = sqlalchemy.orm.sessionmaker(bind=engine)
+    def insert_df_data(self, df, table_name, method='INSERT',host='localhost',user='spider',password = 'jlspider', dbname = 'spider', charset='utf8'):
+        title_str = ','.join(['`%s`' %s for s in df.columns])
+        data_str = ','.join(["(%s)" % (','.join(["%s", ] * df.shape[1])) for i in range(df.shape[0])])
 
-        return DB_session()
-        
+        sql = "INSERT INTO `%s`(%s) VALUES%s" %(table_name, title_str, data_str)
+
+        #print df
+        data_l = list(chain(*np.array(df).tolist()))
+
+        if method == 'UPDATE':
+            sql = sql + 'ON DUPLICATE KEY UPDATE ' + ','.join(['`%s`=VALUES(`%s`)' %((s,) * 2) for s in df.columns])
+            method = 'INSERT.... ON DUPLICATE KEY UPDATE'
+
+        #print sql
+        self.connect(sql, args=data_l, host=host, user=user, password=password, dbname=dbname, charset=charset)
+        print "%s successfully !" %method
+
+    def update_df_data(self, df, table_name, index_name,host='localhost',user='spider',password = 'jlspider', dbname = 'spider', charset='utf8'):
+
+        sql = "UPDATE %s \n SET " % table_name
+        d = df.to_dict()
+        #print d
+        sql_list = []
+        for key in d:
+            d0 = d[key]
+            l = ["WHEN '%s' THEN '%s'" % (key0, d0[key0]) for key0 in d0]
+            sql1 = "`%s` = CASE `%s` \n%s" % (key, index_name, '\n'.join(l))
+            sql_list.append(sql1 + '\nEND')
+        sql = sql + ',\n'.join(sql_list) + "\nWHERE `%s` IN (%s)" %(index_name, ','.join(["'%s'" %s for s in df.index.tolist()]))
+        #print sql
+        self.connect(sql, host=host, user=user, password=password, dbname=dbname, charset=charset)
+        print "UPDATE successfully !"
+
+
+
+
 if __name__ == '__main__':
     mysql_connecter = mysql_connecter()
-    print mysql_connecter.connect('select * from actor', dbname = 'sakila')
-    
+    #print mysql_connecter.connect('select * from actor', dbname = 'sakila')
+    df = pd.read_csv('C:\\Users\\Administrator\\Desktop\\20171122.csv', dtype=np.str)
+    df.index = df['fund_code']
+    print df.head(6)
+    mysql_connecter.update_df_data(df, 'fund_info', 'fund_code')
+
 """
 mysql -P 3306 -h rm-bp1ks9kestihy4wy1o.mysql.rds.aliyuncs.com -u test1 -p
 """

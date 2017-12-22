@@ -133,16 +133,32 @@ if __name__ == '__main__':
 
     #print driver.page_source
 
-    chromedriver = r"C:\Python27\Lib\MyWheels\chromedriver.exe"
-    options = selenium.webdriver.ChromeOptions()
-    #options.add_argument('--profile-directory=Default')
-    options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
-    #options.add_argument('--user-data-dir=C:\Users\admin\AppData\Local\Google\Chrome\User Data\Profile 4')
-    driver = selenium.webdriver.Chrome(executable_path=chromedriver, chrome_options = options)
-    driver.get_screenshot_as_file()
+    # chromedriver = r"C:\Python27\Lib\MyWheels\chromedriver.exe"
+    # options = selenium.webdriver.ChromeOptions()
+    # options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
+    # driver = selenium.webdriver.Chrome(executable_path=chromedriver, chrome_options = options)
 
-    driver.get('https://www.usnews.com/education/best-global-universities')
-    print driver.page_source
+    driver = PhantomJS_driver.initialization()
+
+    driver.get('http://www.simuwang.com/')
+
+    with open('test.html','w') as f:
+        f.write(driver.page_source)
+
+    driver.find_element_by_class_name('topRight').find_element_by_tag_name('a').click()
+    driver.save_screenshot('screenshot.png')
+
+    login_box = driver.find_element_by_id('gr-login-box')
+    user_input = login_box.find_elements_by_tag_name('input')[0]
+    passwd_input = login_box.find_elements_by_tag_name('input')[1]
+    user_input.send_keys('13575486859')
+    passwd_input.send_keys('137482')
+
+    login_buttom = driver.find_element_by_class_name('gr-login-box')
+    login_buttom.click()
+    print driver.get_cookies()
+
+    # print driver.page_source
     #print driver.find_element_by_tag_name('tr').4
 
     #buttons = driver.find_elements_by_tag_name('a')

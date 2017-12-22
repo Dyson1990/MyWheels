@@ -10,11 +10,16 @@
 import copy
 import sys
 import os
+import traceback
+
 import selenium.webdriver
 import bs4
 import random
-import pyvirtualdisplay
+#import pyvirtualdisplay
 import time
+from selenium.webdriver.common.keys import Keys
+
+from selenium.webdriver import ActionChains
 
 sys.path.append(sys.prefix + "\\Lib\\MyWheels")
 reload(sys)
@@ -73,6 +78,9 @@ class driver_manager(object):
         driver.set_page_load_timeout(time_out)
         return driver
 
+    def get_header(self):
+        return self.headers
+
     def Chrome(self, **kwargs):
         # 不让Chrome显示界面
         #display = pyvirtualdisplay.Display(visible=False)
@@ -83,7 +91,7 @@ class driver_manager(object):
         driver = selenium.webdriver.Chrome(chrome_options=options)
 
         #display.stop()
-        driver.set_window_size(20, 20)
+        driver.set_window_size(100, 100)
         return driver
 
     def PhantomJS(self, **kwargs):
@@ -143,14 +151,71 @@ class driver_manager(object):
 if __name__ == '__main__':
     driver_manager = driver_manager()
 
-    s = driver_manager.get_html('https://www.usnews.com/education/best-global-universities',
-                                  engine='Chrome')
-    with open(r'C:\Users\Administrator\Desktop\test.html', 'w') as f:
-        f.write(s)
+    #s = driver_manager.get_html('http://fund.eastmoney.com/fund.html#os_0;isall_0;ft_;pt_1')
 
-    driver = driver_manager.initialization(engine='Chrome')
-    #driver.quit()
+    # driver = driver_manager.initialization(engine='Chrome')  #()#
 
+    # driver.get('http://www.simuwang.com/')
+    #
+    # with open('test.html','w') as f:
+    #     f.write(driver.page_source)
+    #
+    # while not driver.find_elements_by_id('gr-login-box'):
+    #     time.sleep(1)
+    #     driver.find_element_by_class_name('topRight').find_element_by_tag_name('a').click()
+    #     # driver.save_screenshot('screenshot.png')
+    #
+    # driver.save_screenshot('screenshot.png')
+    # login_box = driver.find_element_by_id('gr-login-box')
+    # login_box.find_elements_by_tag_name('input')[0].send_keys('13575486859')
+    # login_box.find_elements_by_tag_name('input')[0].send_keys(Keys.TAB)
+    # login_box.find_elements_by_tag_name('input')[2].send_keys('137982')
+    # # passwd_input.click()
+    # # passwd_input.send_keys('137482')
+    #
+    # login_buttom = login_box.find_element_by_class_name('gr-big-btn')
+    # login_buttom.click()
+    # print driver.get_cookies()
+    #
+
+    # import pandas as pd
+    # import numpy as np
+    #
+    #
+    # df = pd.read_csv('C:\Users\Administrator\Desktop\stock_peg.csv', dtype=np.str)
+    # df = df.set_index("stock_code")
+    #
+    # for i in range(df.shape[0]):
+    #
+
+
+
+    #
+    # for i in range(df.shape[0]):
+    #     try:
+    #
+    #         driver = driver_manager.initialization(engine='Chrome')
+    #         stock_code = df.index[i]
+    #         print 'stock:', stock_code
+    #
+    #         driver.get('http://www.iwencai.com/stockpick/search?typed=1&preParams=&ts=1&f=1&qs=result_rewrite&selfsectsn=&querytype=&searchfilter=&tid=stockpick&w=%s+PEG' %stock_code)
+    #         # with open('test.csv', 'w') as f:
+    #         #     f.write(driver.page_source)
+    #
+    #         bs_obj = bs4.BeautifulSoup(driver.page_source, 'html.parser')
+    #         e_table = bs_obj.find('table', class_='upright_table')
+    #         e_tds = e_table.find_all('td')
+    #         df.loc[stock_code, u'peg'] = e_tds[0].get_text(strip=True)
+    #         df.loc[stock_code, u'预测peg'] = e_tds[1].get_text(strip=True)
+    #         df.loc[stock_code, u'市盈率(pe)'] = e_tds[2].get_text(strip=True)
+    #         df.loc[stock_code, u'净利润同比增长率(%)'] = e_tds[3].get_text(strip=True)
+    #
+    #         # print df
+    #         df.to_excel('C:\Users\Administrator\Desktop\stock_data.xlsx')
+    #     except:
+    #         print traceback.format_exc()
+    #     finally:
+    #         driver.quit()
 
     """
     from selenium import webdriver # 引入配置对象DesiredCapabilities from selenium.webdriver.common.desired_capabilities import DesiredCapabilities dcap = dict(DesiredCapabilities.PHANTOMJS) #从USER_AGENTS列表中随机选一个浏览器头，伪装浏览器 dcap["phantomjs.page.settings.userAgent"] = (random.choice(USER_AGENTS)) # 不载入图片，爬页面速度会快很多 dcap["phantomjs.page.settings.loadImages"] = False # 设置代理 service_args = ['--proxy=127.0.0.1:9999','--proxy-type=socks5'] #打开带配置信息的phantomJS浏览器 driver = webdriver.PhantomJS(phantomjs_driver_path, desired_capabilities=dcap,service_args=service_args) # 隐式等待5秒，可以自己调节 driver.implicitly_wait(5) # 设置10秒页面超时返回，类似于requests.get()的timeout选项，driver.get()没有timeout选项 # 以前遇到过driver.get(url)一直不返回，但也不报错的问题，这时程序会卡住，设置超时选项能解决这个问题。 driver.set_page_load_timeout(10) # 设置10秒脚本超时时间 driver.set_script_timeout(10)
