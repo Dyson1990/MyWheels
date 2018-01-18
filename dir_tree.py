@@ -9,6 +9,7 @@
 Not finish with the gbk code yet !!!!
 """
 import set_log #log_obj.debug(文本)  "\x1B[1;32;41m (文本)\x1B[0m"
+import os
 
 file_dir = {}
 times = 0

@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb149dc6-353b-4ec5-996d-92e02f2442f2" name="Default" comment="微调">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Logistic_regression.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/plot_manager.py" />
+    <list default="true" id="cb149dc6-353b-4ec5-996d-92e02f2442f2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Logistic_regression.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/MySQL_reader.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/csv_report.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/csv_report.py.bak" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/decision_tree.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/dir_tree.py" afterPath="$PROJECT_DIR$/dir_tree.py" />
+      <change beforePath="$PROJECT_DIR$/driver_manager.py" afterPath="$PROJECT_DIR$/driver_manager.py" />
+      <change beforePath="$PROJECT_DIR$/format_dealer.py.bak" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/html_table_reader.py" afterPath="$PROJECT_DIR$/html_table_reader.py" />
+      <change beforePath="$PROJECT_DIR$/merge_data.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/mysql_connecter.py.bak" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/pandas2sql.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/requests_manager.py" afterPath="$PROJECT_DIR$/requests_manager.py" />
+      <change beforePath="$PROJECT_DIR$/url.txt" afterPath="$PROJECT_DIR$/url.txt" />
+      <change beforePath="$PROJECT_DIR$/xls_manager.py" afterPath="$PROJECT_DIR$/xls_manager.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,21 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="plot_manager.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plot_manager.py">
+      <file leaf-file-name="format_dealer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/format_dealer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logistic_regression.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Logistic_regression.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,6 +60,9 @@
       <find />
       <find>mode</find>
       <find>used_id</find>
+      <find>:</find>
+      <find>=</find>
+      <find>ori_data[1]</find>
     </findStrings>
     <replaceStrings>
       <replace>target_type</replace>
@@ -63,6 +70,11 @@
       <replace>drop_duplicates</replace>
       <replace />
       <replace>stock_list</replace>
+      <replace>':'</replace>
+      <replace>:</replace>
+      <replace>ori_data['infoCode']</replace>
+      <replace>ori_data['insName']</replace>
+      <replace>ori_data['datetime']</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -72,7 +84,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/func_manager.py" />
-        <option value="$PROJECT_DIR$/html_table_reader.py" />
         <option value="$PROJECT_DIR$/decision_tree.py" />
         <option value="$USER_HOME$/Desktop/spider/spidertest - 副本 (4) - 副本.py" />
         <option value="$USER_HOME$/Desktop/spider/spidertest - 副本.py" />
@@ -82,12 +93,16 @@
         <option value="$USER_HOME$/Desktop/spider/spidertest.py" />
         <option value="$PROJECT_DIR$/mysql_connecter.py" />
         <option value="$PROJECT_DIR$/PhantomJS_driver.py" />
-        <option value="$PROJECT_DIR$/xls_manager.py" />
-        <option value="$PROJECT_DIR$/driver_manager.py" />
-        <option value="$PROJECT_DIR$/url.txt" />
-        <option value="$PROJECT_DIR$/requests_manager.py" />
         <option value="$PROJECT_DIR$/plot_manager.py" />
         <option value="$PROJECT_DIR$/Logistic_regression.py" />
+        <option value="$PROJECT_DIR$/url.txt" />
+        <option value="$PROJECT_DIR$/requests_manager.py" />
+        <option value="$PROJECT_DIR$/csv_report.py" />
+        <option value="$PROJECT_DIR$/dir_tree.py" />
+        <option value="$PROJECT_DIR$/driver_manager.py" />
+        <option value="$PROJECT_DIR$/html_table_reader.py" />
+        <option value="$PROJECT_DIR$/pandas2sql.py" />
+        <option value="$PROJECT_DIR$/xls_manager.py" />
       </list>
     </option>
   </component>
@@ -112,7 +127,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,6 +138,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -147,7 +162,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.plot_manager">
+  <component name="RunManager" selected="Python.requests_manager">
     <configuration name="PhantomJS_driver" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -247,9 +262,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.plot_manager" />
-        <item index="1" class="java.lang.String" itemvalue="Python.requests_manager" />
-        <item index="2" class="java.lang.String" itemvalue="Python.driver_manager" />
+        <item index="0" class="java.lang.String" itemvalue="Python.requests_manager" />
+        <item index="1" class="java.lang.String" itemvalue="Python.driver_manager" />
+        <item index="2" class="java.lang.String" itemvalue="Python.plot_manager" />
         <item index="3" class="java.lang.String" itemvalue="Python.PhantomJS_driver" />
         <item index="4" class="java.lang.String" itemvalue="Python.mysql_connecter" />
       </list>
@@ -360,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514258796801</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="微调">
+      <created>1514453685527</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1514453685527</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TodoView">
@@ -374,14 +396,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23814541" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23814541" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37121212" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.468039" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46753246" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32467532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -412,55 +433,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PhantomJS_driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="108" column="19" lean-forward="true" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/func_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_table_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhantomJS_driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1728">
-          <caret line="108" column="19" lean-forward="true" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhantomJS_driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_table_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhantomJS_driver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2080">
-          <caret line="130" column="30" lean-forward="true" selection-start-line="130" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/html_table_reader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -595,24 +567,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spider_func.py" />
-    <entry file="file://$PROJECT_DIR$/func_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/decision_tree.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_table_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="49" column="39" lean-forward="false" selection-start-line="49" selection-start-column="39" selection-end-line="49" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -651,13 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/csv_report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysql_connecter.py.bak">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-594">
@@ -666,13 +617,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.html" />
-    <entry file="file://$PROJECT_DIR$/mysql_connecter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="90" column="18" lean-forward="false" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../site-packages/selenium/webdriver/remote/webelement.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -694,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xls_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="39" column="21" lean-forward="true" selection-start-line="39" selection-start-column="21" selection-end-line="39" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -715,27 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/url.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requests_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="169" column="14" lean-forward="true" selection-start-line="169" selection-start-column="14" selection-end-line="169" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/driver_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="189" column="0" lean-forward="false" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -743,18 +659,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plot_manager.py">
+    <entry file="file://$PROJECT_DIR$/url.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5408">
+          <caret line="338" column="0" lean-forward="false" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requests_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-400">
+          <caret line="44" column="23" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/csv_report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dir_tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="27" column="17" lean-forward="false" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/driver_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="140" column="8" lean-forward="false" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/func_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Logistic_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="36" column="12" lean-forward="false" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="560">
+          <caret line="35" column="35" lean-forward="true" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/merge_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="42" column="31" lean-forward="false" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html_table_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MySQL_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="695">
+          <caret line="46" column="29" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mysql_connecter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="90" column="18" lean-forward="false" selection-start-line="90" selection-start-column="18" selection-end-line="90" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pandas2sql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="33" column="8" lean-forward="false" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mytimer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xls_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/format_dealer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -138,20 +138,40 @@ class driver_manager(object):
         driver = self.initialization(engine=engine)
         driver.get('about:blank')
         driver.get(url)
+
         html = driver.page_source
         driver.quit()
         return html
 
-    def get_file(self, url, targetfile):
-        r = requests.get(url, headers=self.headers)
-        with open(targetfile, "wb") as code:
-            code.write(r.content)
-            print "====>>>Successfully saving %s" %targetfile
 
 if __name__ == '__main__':
     driver_manager = driver_manager()
-
+    url = "http://www.simuwang.com/"
     #s = driver_manager.get_html('http://fund.eastmoney.com/fund.html#os_0;isall_0;ft_;pt_1')
+    driver = driver_manager.initialization()
+    driver.get(url)
+    # domain = ".simuwang.com"
+    # path = "/"
+    cookie0 = {"cur_ck_time":"1514945128;",
+        "ck_request_key":"O5K2PsIhrWt%2F6oeM707he2IVJiVJHlIQsuVY4FJYNy0%3D;",
+        "http_tK_cache":"ace8a7139a833b6878b32b4c2479b7ad828fb7c1;",
+        "passport":"55635%09user_13575486859%09VFJRD1BWBQ9eUFgHBFdUUFdVCwFQBwZUCVVSVlFXUgo%3D9b207ecd5c;",
+        "rz_u_p":"d41d8cd98f00b204e9800998ecf8427e%3Duser_13575486859;",
+        "rz_rem_u_p":"aiFB3odpeWZHIeDOt%2FJ%2BaNkn%2F8V390t5nnkC3N3%2FbHM%3D%24KzJx4oUsxjHHhuNbZ9EmS5OMgDiO8JGftPoh1SVUL24%3D;"
+    }
+    # cookie0 = dict([s0.split('=') for s0 in s.split('\n')])
+    # print cookie0
+    # cookies = []
+    for key in cookie0:
+        d = {}
+        d['domain'] = ".simuwang.com"
+        d['path'] = "/"
+        d['name'] = key.strip()
+        d['value'] = cookie0[key]
+        driver.add_cookie(d)
+
+    driver.get(url)
+    driver.save_screenshot('screenshot.png')
 
     # driver = driver_manager.initialization(engine='Chrome')  #()#
 

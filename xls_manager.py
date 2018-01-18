@@ -29,6 +29,7 @@ class xls_manager(object):
 
     def dfs_to_excel(self, d, output_file):
         """
+        将多个Exce工作表放在一个xls或者xlsx文件里
         :param d: {sheet name : df}
         :return:
         """

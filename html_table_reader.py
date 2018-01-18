@@ -25,6 +25,8 @@ class html_table_reader(object):
 
     def table_tr_td(self, e_table, fill_method = None, start_row = 0):
         """
+        主要是为了针对有合并单元格的网页table写的，将含有合并单元格的表格放进Dataframe的结果还有待考虑
+
         :param e_table: bs4的table元素
         :param fill_method : 参数与fillna()中的method相同，选择填充方式，否则用None
         :return:
