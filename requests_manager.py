@@ -159,23 +159,6 @@ if __name__ == '__main__':
             ignore_index=True)
             output.to_excel(u'C:\\Users\\Administrator\\Desktop\\stock_解禁.xlsx')
 
-            # # print resp
-            # data_l = json.loads(resp)['Result']['pjtj']
-            # # data_l = pd.read_json(data)
-            # res = pd.DataFrame([])
-            # for d in data_l:
-            #     # print d
-            #     d['stock_code'] = df.index[i]
-            #     res = res.append(d,ignore_index=True)
-            # output = output.append({
-            #     u'股票代号':df.index[i],
-            #     u'3月内机构评级统计': u"买入：%s，增持：%s。" % (res[res['sjd'] == u'3月内']['mr'].iloc[0], res[res['sjd'] == u'3月内']['zc'].iloc[0]),
-            #     u'6月内机构评级统计': u"买入：%s，增持：%s。" % (res[res['sjd'] == u'6月内']['mr'].iloc[0], res[res['sjd'] == u'6月内']['zc'].iloc[0]),
-            #     u'1年内机构评级统计': u"买入：%s，增持：%s。" % (res[res['sjd'] == u'1年内']['mr'].iloc[0], res[res['sjd'] == u'1年内']['zc'].iloc[0])
-            # },
-            # ignore_index=True)
-            # print output
-            # output.to_excel('C:\Users\Administrator\Desktop\stock_predict.xlsx')
         except:
             print traceback.format_exc()
 
@@ -201,7 +184,7 @@ if __name__ == '__main__':
             },
             ignore_index=True)
             print output
-            output.to_excel('C:\Users\Administrator\Desktop\stock_predict1.xlsx')
+            output.to_excel('C:\Users\Administrator\Desktop\stock_predict.xlsx')
         except:
             print traceback.format_exc()
 
