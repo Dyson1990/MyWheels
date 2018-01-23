@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb149dc6-353b-4ec5-996d-92e02f2442f2" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/abandoned/MySQL_reader.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/abandoned/csv_report.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/abandoned/pandas2sql.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/machine_learning/Logistic_regression.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/machine_learning/decision_tree.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/machine_learning/merge_data.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/mysql_connecter.py" afterPath="$PROJECT_DIR$/mysql_connecter.py" />
-      <change beforePath="$PROJECT_DIR$/requests_manager.py" afterPath="$PROJECT_DIR$/requests_manager.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -128,6 +132,16 @@
             <path>
               <item name="MyWheels" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyWheels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyWheels" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyWheels" type="462c0819:PsiDirectoryNode" />
+              <item name="abandoned" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyWheels" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyWheels" type="462c0819:PsiDirectoryNode" />
+              <item name="machine_learning" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -385,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516245808590</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="微调">
+      <created>1516669528717</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1516669528717</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -400,7 +421,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23814541" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23814541" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
